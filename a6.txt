@@ -1,0 +1,68 @@
+Script started on 2022-12-07 03:21:12-05:00
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ history -c
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ cp /home/test/A1/downloaded_tweets_extend_original_nolf2_NOBOT.tsv /mnt/scratch/shivaam/A6/
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ cp /home/test/A1/downloaded_tweets_extend_nolf2_NOBOT.tsv /mnt/scratch/shivam/A6/
+ied_to' downloaded_tweets_extend_original_nolf2_NOBOT.tsv |  awk -F "\t" '{ if($2 != $6) print $0}' > downloaded_tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv
+
+grep -h 'type=replied_to' downloaded_tweets_extend_nolf2_NOBOT.tsv |  awk -F "\t" '{ if($2 != $6) print $0}' > downloaded_tweets_extend_nolf2_REPLIES.NOBOTS.tsv
+
+
+awk -F "\t" '{ print $6 "\t" $2 }' downloaded_tweets_extend_original_nolf2_REPLIES.NOBOT]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ grep -h 'type=replied_to' downloaded_tweets_extend_original_nolf2_NOBOT.tsv |  awk -FF "\t" '{ if($2 != $6) print $0}' > downloaded_tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv
+eplies.tsv | uniq -c | awk -F " " '{if($1 >= 3) print $2 "\t"}' > ids_over_3
+
+grep -Ff ids_over_3 replies.tsv > 3_or_more_replies.tsv
+
+cut -f 2 3_or_more_replies.tsv | uniq > repliers]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ grep -h 'type=replied_to' downloaded_tweets_extend_nolf2_NOBOT.tsv |  awk -F "\t" '{  if($2 != $6) print $0}' > downloaded_tweets_extend_nolf2_REPLIES.NOBOTS.tsv
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ awk -F "\t" '{ print $6 "\t" $2 }' downloaded_tweets_extend_original_nolf2_REPLIES.NOOBOTS.tsv | sort > replies.tsv
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ awk -F "\t" '{print $1}' replies.tsv | uniq -c | awk -F " " '{if($1 >= 3) print $2 "\\t"}' > ids_over_3
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ grep -Ff ids_over_3 replies.tsv > 3_or_more_replies.tsv
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ cut -f 2 3_or_more_replies.tsv | uniq > repliers
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ wc -l ids_over_3
+112 ids_over_3
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ wc -l repliers
+496 repliers
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ cut -f 1 replies.tsv | sort | uniq > all_original_tweeters
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ grep -Ff repliers all_original_tweeters | wc -l
+35
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ cut -f 1 replies.tsv | sort | uniq > all_original_tweeters
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ grep -Ff repliers all_original_tweeters | wc -l
+35
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ awk -F "\t" 'NR==FNR {id[$1]=$1; next } ($6 in id) {print $3}' ids_over_3 downloaded__tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv | awk -F " " '{print $1}' | sort | uniq -c | sort -nr  | head -n 10
+sed "s/\.//g" | sed "s/?//g" | sed "s/\!//g" | sed "s/-/ /g"  | sed "s/)//g" | sed "s/(//g" | sed "s/\\\//g" | sed "s/\"/ /g" | sed "s/'//g" | sed "s/;//g" | sed "s/  and //g" | sed "s/ or //g" | sed "s/ if //g" | sed "s/ in //g" | sed "s/ it //g" | sed "s/ its //g" | sed "s/ of //g" | sed "s/ to //g" | sed "s/ in //g" | sed "s/ that //g" | sed "s/ this //g" | sed "s/ is //g" | sed "s/ for //g" | sed "s/ [t|T]he //g" | sed "s/ a //g" | sed "s/ I //g" | sed "s/ with //g" | sed "s/ as //g" | sed "s/ on //g" | sed "s/ but //g" |sed "s/ and //g" |sed "s/ you //g" |sed "s/ are //g"|sed "s/ not //g"|sed "s/ [W|w]e //g"|sed "s/ not //g" | sed "s/<.. *\/*>//g" > body.txt
+
+cat body.txt | sed "s/ /\n/g" | sed "s/ //g"| awk '$0 != "" {print $0}' | sort | uniq -c | sort -nr | head -n 10     15 2022-02-26
+     14 2022-02-27
+     12 2022-03-18
+     11 2022-04-08
+     11 2022-03-08
+     11 2022-01-13
+     10 2022-02-24
+      9 2022-04-17
+      9 2022-04-12
+      9 2022-02-23
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ awk -F "\t" 'NR==FNR {id[$1]=$1; next } ($6 in id) {print $8}' ids_over_3 downloaded__tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv | sed "s/\.//g" | sed "s/?//g" | sed "s/\!//g" | sed ""s/-/ /g"  | sed "s/)//g" | sed "s/(//g" | sed "s/\\\//g" | sed "s/\"/ /g" | sed "s/'//g" | sed "s/;//gg" | sed "s/  and //g" | sed "s/ or //g" | sed "s/ if //g" | sed "s/ in //g" | sed "s/ it //g" | sed "ss/ its //g" | sed "s/ of //g" | sed "s/ to //g" | sed "s/ in //g" | sed "s/ that //g" | sed "s/ this ///g" | sed "s/ is //g" | sed "s/ for //g" | sed "s/ [t|T]he //g" | sed "s/ a //g" | sed "s/ I //g" | sedd "s/ with //g" | sed "s/ as //g" | sed "s/ on //g" | sed "s/ but //g" |sed "s/ and //g" |sed "s/ you ///g" |sed "s/ are //g"|sed "s/ not //g"|sed "s/ [W|w]e //g"|sed "s/ not //g" | sed "s/<.. *\/*>//g" > bbody.txt
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ 
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ cat body.txt | sed "s/ /\n/g" | sed "s/ //g"| awk '$0 != "" {print $0}' | sort | uniqq -c | sort -nr | head -n 10
+    406 
+     46 &amp
+     34 have
+     27 who
+     24 they
+     21 your
+     19 their
+     19 @HowardGriffiths
+     19 be
+     19 at
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ history > cmds/.[K[K.log
+]0;shivam@sjsu:/mnt/scratch/shivam/A6[shivam@sjsu A6]$ exit
+
+Script done on 2022-12-07 03:22:50-05:00
