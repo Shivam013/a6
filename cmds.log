@@ -10,9 +10,7 @@
    10  wc -l repliers
    11  cut -f 1 replies.tsv | sort | uniq > all_original_tweeters
    12  grep -Ff repliers all_original_tweeters | wc -l
-   13  cut -f 1 replies.tsv | sort | uniq > all_original_tweeters
-   14  grep -Ff repliers all_original_tweeters | wc -l
-   15  awk -F "\t" 'NR==FNR {id[$1]=$1; next } ($6 in id) {print $3}' ids_over_3 downloaded_tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv | awk -F " " '{print $1}' | sort | uniq -c | sort -nr | head -n 10
-   16  awk -F "\t" 'NR==FNR {id[$1]=$1; next } ($6 in id) {print $8}' ids_over_3 downloaded_tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv | sed "s/\.//g" | sed "s/?//g" | sed "s/\!//g" | sed "s/-/ /g"  | sed "s/)//g" | sed "s/(//g" | sed "s/\\\//g" | sed "s/\"/ /g" | sed "s/'//g" | sed "s/;//g" | sed "s/  and //g" | sed "s/ or //g" | sed "s/ if //g" | sed "s/ in //g" | sed "s/ it //g" | sed "s/ its //g" | sed "s/ of //g" | sed "s/ to //g" | sed "s/ in //g" | sed "s/ that //g" | sed "s/ this //g" | sed "s/ is //g" | sed "s/ for //g" | sed "s/ [t|T]he //g" | sed "s/ a //g" | sed "s/ I //g" | sed "s/ with //g" | sed "s/ as //g" | sed "s/ on //g" | sed "s/ but //g" |sed "s/ and //g" |sed "s/ you //g" |sed "s/ are //g"|sed "s/ not //g"|sed "s/ [W|w]e //g"|sed "s/ not //g" | sed "s/<.. *\/*>//g" > body.txt
-   17  cat body.txt | sed "s/ /\n/g" | sed "s/ //g"| awk '$0 != "" {print $0}' | sort | uniq -c | sort -nr | head -n 10
-   18  history > cmds.log
+   13  awk -F "\t" 'NR==FNR {id[$1]=$1; next } ($6 in id) {print $3}' ids_over_3 downloaded_tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv | awk -F " " '{print $1}' | sort | uniq -c | sort -nr | head -n 10
+   14  awk -F "\t" 'NR==FNR {id[$1]=$1; next } ($6 in id) {print $8}' ids_over_3 downloaded_tweets_extend_original_nolf2_REPLIES.NOBOTS.tsv | sed "s/\.//g" | sed "s/?//g" | sed "s/\!//g" | sed "s/-/ /g"  | sed "s/)//g" | sed "s/(//g" | sed "s/\\\//g" | sed "s/\"/ /g" | sed "s/'//g" | sed "s/;//g" | sed "s/  and //g" | sed "s/ or //g" | sed "s/ if //g" | sed "s/ in //g" | sed "s/ it //g" | sed "s/ its //g" | sed "s/ of //g" | sed "s/ to //g" | sed "s/ in //g" | sed "s/ that //g" | sed "s/ this //g" | sed "s/ is //g" | sed "s/ for //g" | sed "s/ [t|T]he //g" | sed "s/ a //g" | sed "s/ I //g" | sed "s/ with //g" | sed "s/ as //g" | sed "s/ on //g" | sed "s/ but //g" |sed "s/ and //g" |sed "s/ you //g" |sed "s/ are //g"|sed "s/ not //g"|sed "s/ [W|w]e //g"|sed "s/ not //g" | sed "s/<.. *\/*>//g" > body.txt
+   15  cat body.txt | sed "s/ /\n/g" | sed "s/ //g"| awk '$0 != "" {print $0}' | sort | uniq -c | sort -nr | head -n 10
+   16  history > cmds.log
